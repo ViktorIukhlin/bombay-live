@@ -3,17 +3,20 @@ import { getUserData } from "../../lib/api";
 import { Suspense } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../app/store";
-import UserService from "../../services/userService";
-import RpcService from "../../services/rpcService";
+
+import UserService from "../../features/user/userService";
+import RpsService from "../../features/rps/rpsService";
+import Header from "../../features/rps/components/Header";
 
 const ScissorsRockPaper = (): JSX.Element => {
     const loaderData = useLoaderData() as { balance: number };
     const balance = useSelector((state: RootState) => state.user.balance);
     const totalWin = useSelector((state: RootState) => state.user.totalWin);
-    const rpc = useSelector((state: RootState) => state.rpc);
+    const rps = useSelector((state: RootState) => state.rps);
     const dispatch = useDispatch<AppDispatch>();
     return (
         <div>
+            <Header balance={1000} bet={1000} win={100} />
             <div>ScissorsRockPaper</div>
             <div>
                 <h1>User Balance: {balance}</h1>
@@ -30,27 +33,27 @@ const ScissorsRockPaper = (): JSX.Element => {
                 >
                     Add 50 to Total Wins
                 </button>
-                <h2>RPC Bet: {rpc.bet}</h2>
-                <button onClick={() => RpcService.placeBet(dispatch, 100)}>
+                <h2>RPS Bet: {rps.bet}</h2>
+                <button onClick={() => RpsService.placeBet(dispatch, 100)}>
                     Place Bet 100
                 </button>
                 <h3>Bets</h3>
-                <p>Rock: {rpc.bets.rock}</p>
+                <p>Rock: {rps.bets.rock}</p>
                 <button
-                    onClick={() => RpcService.updateBet(dispatch, "rock", 10)}
+                    onClick={() => RpsService.updateBet(dispatch, "rock", 10)}
                 >
                     Bet 10 on Rock
                 </button>
-                <p>Paper: {rpc.bets.paper}</p>
+                <p>Paper: {rps.bets.paper}</p>
                 <button
-                    onClick={() => RpcService.updateBet(dispatch, "paper", 10)}
+                    onClick={() => RpsService.updateBet(dispatch, "paper", 10)}
                 >
                     Bet 10 on Paper
                 </button>
-                <p>Scissors: {rpc.bets.scissors}</p>
+                <p>Scissors: {rps.bets.scissors}</p>
                 <button
                     onClick={() =>
-                        RpcService.updateBet(dispatch, "scissors", 10)
+                        RpsService.updateBet(dispatch, "scissors", 10)
                     }
                 >
                     Bet 10 on Scissors

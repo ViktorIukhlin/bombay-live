@@ -1,0 +1,34 @@
+@import "../../../../styles/colors";
+
+.wrapper {
+    width: 100%;
+    background-color: $dark;
+    display: flex;
+    justify-content: center;
+}
+
+.container {
+    display: flex;
+    color: white;
+    font-size: 0.87rem;
+    line-height: 1.7rem;
+    font-weight: 700;
+    letter-spacing: -0.04rem;
+    margin-left: 1.25rem;
+
+    & :nth-child(2) {
+        .itemValue {
+            width: 5.15rem;
+        }
+    }
+}
+
+.itemLabel {
+    color: $light;
+}
+
+.itemValue {
+    display: inline-block;
+    color: white;
+    width: 5.5rem;
+}
