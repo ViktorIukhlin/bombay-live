@@ -1,10 +1,10 @@
-import styles from "./Header.module.scss";
-import { IHeaderItem, IHeaderProps } from "./interfaces";
+import { IRpsHeaderItem, IRpsHeaderProps } from "./interfaces";
+import styles from "./RpsHeader.module.scss";
 
-const Header = ({ balance, bet, win }: IHeaderProps): JSX.Element => {
+const RpsHeader = ({ balance, bet, win }: IRpsHeaderProps): JSX.Element => {
     const { wrapper, container, itemLabel, itemValue } = styles;
 
-    const HeaderItem = ({ label, value }: IHeaderItem) => (
+    const HeaderItem = ({ label, value }: IRpsHeaderItem) => (
         <li className={itemLabel} aria-label={`${label}${value}`}>
             {label}: <span className={itemValue}>{value}</span>
         </li>
@@ -20,4 +20,4 @@ const Header = ({ balance, bet, win }: IHeaderProps): JSX.Element => {
         </div>
     );
 };
-export default Header;
+export default RpsHeader;

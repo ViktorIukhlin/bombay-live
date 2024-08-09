@@ -1,9 +1,9 @@
-export interface IHeaderItem {
+export interface IRpsHeaderItem {
     label: string;
     value: number;
 }
 
-export interface IHeaderProps {
+export interface IRpsHeaderProps {
     balance: number;
     bet: number;
     win: number;
