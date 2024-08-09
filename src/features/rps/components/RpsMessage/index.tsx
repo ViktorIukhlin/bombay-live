@@ -24,7 +24,11 @@ const RpsMessage = ({
     // Tie
     if (tie)
         return (
-            <section className={container} aria-live="polite">
+            <section
+                data-test-id="rps-tie-message"
+                className={container}
+                aria-live="polite"
+            >
                 <div className={winContainer}>
                     <h2 className={`${winTitle} ${tieTitle}`} role="alert">
                         TIE
@@ -36,7 +40,11 @@ const RpsMessage = ({
     // Win
     if (winningPosition)
         return (
-            <section className={container} aria-live="polite">
+            <section
+                data-test-id="rps-win-message"
+                className={container}
+                aria-live="polite"
+            >
                 <div className={winContainer}>
                     <h2 className={winTitle} role="alert">
                         {winningPosition} WON
@@ -57,7 +65,11 @@ const RpsMessage = ({
     // Processing
     if (computerChoice && playerChoice)
         return (
-            <section className={container} aria-live="polite">
+            <section
+                data-test-id="rps-processing-message"
+                className={container}
+                aria-live="polite"
+            >
                 <div className={processingMessage}>
                     <span className={choice}>{computerChoice}</span>
                     <span className={vs}>vs</span>
@@ -68,7 +80,11 @@ const RpsMessage = ({
 
     // Default
     return (
-        <section className={container} aria-live="polite">
+        <section
+            data-test-id="rps-default-message"
+            className={container}
+            aria-live="polite"
+        >
             <p className={defaultMessage}>PICK YOUR POSITIONS</p>
         </section>
     );

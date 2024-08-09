@@ -14,4 +14,11 @@ export default class RpsService {
     ) {
         dispatch(updateBet({ type, amount }));
     }
+
+    public static formatNumber(num: number): string | number {
+        if (num < 1000) return num;
+
+        const formattedNum = (num / 1000).toFixed(1);
+        return `${formattedNum}k`;
+    }
 }

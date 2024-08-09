@@ -1,3 +1,5 @@
+import styles from "./RockPaperScissors.module.scss";
+
 import { useLoaderData, defer, Await } from "react-router-dom";
 import { getUserData } from "../../lib/api";
 import { Suspense } from "react";
@@ -10,8 +12,11 @@ import RpsHeader from "../../features/rps/components/RpsHeader";
 import RpsWrapper from "../../features/rps/components/RpsWrapper";
 import RpsMessage from "../../features/rps/components/RpsMessage";
 import { BetType } from "../../features/rps/ interfaces";
+import RpsCard from "../../features/rps/components/RpsCard";
 
 const RockPaperScissors = (): JSX.Element => {
+    const { rpsCardContainer } = styles;
+
     const loaderData = useLoaderData() as { balance: number };
     const balance = useSelector((state: RootState) => state.user.balance);
     const totalWin = useSelector((state: RootState) => state.user.totalWin);
@@ -27,6 +32,36 @@ const RockPaperScissors = (): JSX.Element => {
                 winAmount={500}
                 tie={true}
             />
+
+            <div className={rpsCardContainer}>
+                <RpsCard
+                    testId="rps-rock-card"
+                    name={BetType.rock}
+                    color="blue"
+                    bet={500}
+                    callback={(name) => {
+                        console.log(name);
+                    }}
+                />
+                <RpsCard
+                    testId="rps-paper-card"
+                    name={BetType.paper}
+                    color="green"
+                    bet={11600}
+                    active={true}
+                    callback={(name) => {
+                        console.log(name);
+                    }}
+                />
+                <RpsCard
+                    testId="rps-scissors-card"
+                    name={BetType.scissors}
+                    color="red"
+                    callback={(name) => {
+                        console.log(name);
+                    }}
+                />
+            </div>
 
             <div>RockPaperScissors</div>
             <div>
