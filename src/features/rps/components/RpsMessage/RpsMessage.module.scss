@@ -53,13 +53,17 @@
 
 .winMessage {
     height: 1.75rem;
-    font-size: 1.4rem;
+    font-size: 1.45rem;
     font-weight: 600;
     color: $light;
     text-align: center;
-    letter-spacing: 0.04rem;
+    letter-spacing: 0.01rem;
 }
 
 .winNumber {
     color: white;
+}
+
+.tieTitle {
+    color: $light;
 }

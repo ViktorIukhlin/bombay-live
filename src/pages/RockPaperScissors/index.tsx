@@ -9,6 +9,7 @@ import RpsService from "../../features/rps/rpsService";
 import RpsHeader from "../../features/rps/components/RpsHeader";
 import RpsWrapper from "../../features/rps/components/RpsWrapper";
 import RpsMessage from "../../features/rps/components/RpsMessage";
+import { BetType } from "../../features/rps/ interfaces";
 
 const RockPaperScissors = (): JSX.Element => {
     const loaderData = useLoaderData() as { balance: number };
@@ -20,9 +21,11 @@ const RockPaperScissors = (): JSX.Element => {
         <RpsWrapper>
             <RpsHeader balance={1000} bet={1000} win={100} />
             <RpsMessage
-                computerChoice="ROCK"
-                playerChoice="PAPER"
-                result={{ winningPosition: "PAPER", winAmount: "XXX.XX" }}
+                computerChoice={"ROCK" as BetType}
+                playerChoice={"PAPER" as BetType}
+                winningPosition={"PAPER" as BetType}
+                winAmount={500}
+                tie={true}
             />
 
             <div>RockPaperScissors</div>

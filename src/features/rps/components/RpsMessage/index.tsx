@@ -1,10 +1,13 @@
+import { IRpsMessageProps } from "./interfaces";
 import styles from "./RpsMessage.module.scss";
 
 const RpsMessage = ({
     computerChoice,
     playerChoice,
-    result,
-}: any): JSX.Element => {
+    winningPosition,
+    winAmount,
+    tie,
+}: IRpsMessageProps): JSX.Element => {
     const {
         container,
         defaultMessage,
@@ -15,11 +18,21 @@ const RpsMessage = ({
         winTitle,
         winMessage,
         winNumber,
+        tieTitle,
     } = styles;
-    const { winningPosition, winAmount } = result;
 
-    // Result state
-    if (result)
+    // Tie
+    if (tie)
+        return (
+            <div className={container}>
+                <div className={winContainer}>
+                    <div className={`${winTitle} ${tieTitle}`}>TIE</div>
+                </div>
+            </div>
+        );
+
+    // Win
+    if (winningPosition)
         return (
             <div className={container}>
                 <div className={winContainer}>
@@ -37,7 +50,7 @@ const RpsMessage = ({
             </div>
         );
 
-    // Processing state
+    // Processing
     if (computerChoice && playerChoice)
         return (
             <div className={container}>
@@ -49,7 +62,7 @@ const RpsMessage = ({
             </div>
         );
 
-    // Default state
+    // Default
     return (
         <div className={container}>
             <p className={defaultMessage}>PICK YOUR POSITIONS</p>
