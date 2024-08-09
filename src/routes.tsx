@@ -1,6 +1,6 @@
-import ScissorsRockPaper, {
-    dependencies as ScissorsRockPaperDependencies,
-} from "./pages/ScissorsRockPaper";
+import RockPaperScissors, {
+    dependencies as RockPaperScissorsDependencies,
+} from "./pages/RockPaperScissors";
 import { Navigate, RouteObject } from "react-router-dom";
 
 // If you need more information on how to create routes, follow the link below
@@ -8,8 +8,8 @@ import { Navigate, RouteObject } from "react-router-dom";
 const routes: RouteObject[] = [
     {
         path: "/",
-        element: <ScissorsRockPaper />,
-        loader: ScissorsRockPaperDependencies,
+        element: <RockPaperScissors />,
+        loader: RockPaperScissorsDependencies,
     },
     {
         path: "*",

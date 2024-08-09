@@ -8,7 +8,7 @@ import UserService from "../../features/user/userService";
 import RpsService from "../../features/rps/rpsService";
 import Header from "../../features/rps/components/Header";
 
-const ScissorsRockPaper = (): JSX.Element => {
+const RockPaperScissors = (): JSX.Element => {
     const loaderData = useLoaderData() as { balance: number };
     const balance = useSelector((state: RootState) => state.user.balance);
     const totalWin = useSelector((state: RootState) => state.user.totalWin);
@@ -17,7 +17,7 @@ const ScissorsRockPaper = (): JSX.Element => {
     return (
         <div>
             <Header balance={1000} bet={1000} win={100} />
-            <div>ScissorsRockPaper</div>
+            <div>RockPaperScissors</div>
             <div>
                 <h1>User Balance: {balance}</h1>
                 <button
@@ -67,7 +67,7 @@ const ScissorsRockPaper = (): JSX.Element => {
         </div>
     );
 };
-export default ScissorsRockPaper;
+export default RockPaperScissors;
 
 export function dependencies() {
     return defer({ balance: getUserData() });
