@@ -24,19 +24,23 @@ const RpsMessage = ({
     // Tie
     if (tie)
         return (
-            <div className={container}>
+            <section className={container} aria-live="polite">
                 <div className={winContainer}>
-                    <div className={`${winTitle} ${tieTitle}`}>TIE</div>
+                    <h2 className={`${winTitle} ${tieTitle}`} role="alert">
+                        TIE
+                    </h2>
                 </div>
-            </div>
+            </section>
         );
 
     // Win
     if (winningPosition)
         return (
-            <div className={container}>
+            <section className={container} aria-live="polite">
                 <div className={winContainer}>
-                    <div className={winTitle}>{winningPosition} WON</div>
+                    <h2 className={winTitle} role="alert">
+                        {winningPosition} WON
+                    </h2>
 
                     <div className={winMessage}>
                         {winAmount && (
@@ -47,26 +51,26 @@ const RpsMessage = ({
                         )}
                     </div>
                 </div>
-            </div>
+            </section>
         );
 
     // Processing
     if (computerChoice && playerChoice)
         return (
-            <div className={container}>
+            <section className={container} aria-live="polite">
                 <div className={processingMessage}>
                     <span className={choice}>{computerChoice}</span>
                     <span className={vs}>vs</span>
                     <span className={choice}>{playerChoice}</span>
                 </div>
-            </div>
+            </section>
         );
 
     // Default
     return (
-        <div className={container}>
+        <section className={container} aria-live="polite">
             <p className={defaultMessage}>PICK YOUR POSITIONS</p>
-        </div>
+        </section>
     );
 };
 export default RpsMessage;
