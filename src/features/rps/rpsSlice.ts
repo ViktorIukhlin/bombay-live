@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { IBets, IRpcState } from "./ interfaces";
+import { IBets, IRpsState } from "./ interfaces";
 
-const initialState: IRpcState = {
+const initialState: IRpsState = {
     bet: 0,
     bets: {
         rock: 0,
@@ -10,8 +10,8 @@ const initialState: IRpcState = {
     },
 };
 
-const rpcSlice = createSlice({
-    name: "rpc",
+const rpsSlice = createSlice({
+    name: "rps",
     initialState,
     reducers: {
         placeBet: (state, action: PayloadAction<number>) => {
@@ -26,6 +26,6 @@ const rpcSlice = createSlice({
     },
 });
 
-export const { placeBet, updateBet } = rpcSlice.actions;
+export const { placeBet, updateBet } = rpsSlice.actions;
 
-export default rpcSlice.reducer;
+export default rpsSlice.reducer;

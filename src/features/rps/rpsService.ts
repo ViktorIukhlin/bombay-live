@@ -1,8 +1,8 @@
-import { AppDispatch } from "../app/store";
-import { IBets } from "../features/rpc/ interfaces";
-import { placeBet, updateBet } from "../features/rpc/rpcSlice";
+import { AppDispatch } from "../../app/store";
+import { IBets } from "./ interfaces";
+import { placeBet, updateBet } from "./rpsSlice";
 
-export default class RpcService {
+export default class RpsService {
     public static placeBet(dispatch: AppDispatch, bet: number) {
         dispatch(placeBet(bet));
     }

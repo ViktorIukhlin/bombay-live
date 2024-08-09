@@ -4,7 +4,7 @@ export interface IBets {
     scissors: number;
 }
 
-export interface IRpcState {
+export interface IRpsState {
     bet: number;
     bets: IBets;
 }
