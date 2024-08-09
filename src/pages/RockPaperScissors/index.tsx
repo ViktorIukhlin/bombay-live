@@ -8,6 +8,7 @@ import UserService from "../../features/user/userService";
 import RpsService from "../../features/rps/rpsService";
 import RpsHeader from "../../features/rps/components/RpsHeader";
 import RpsWrapper from "../../features/rps/components/RpsWrapper";
+import RpsMessage from "../../features/rps/components/RpsMessage";
 
 const RockPaperScissors = (): JSX.Element => {
     const loaderData = useLoaderData() as { balance: number };
@@ -18,6 +19,12 @@ const RockPaperScissors = (): JSX.Element => {
     return (
         <RpsWrapper>
             <RpsHeader balance={1000} bet={1000} win={100} />
+            <RpsMessage
+                computerChoice="ROCK"
+                playerChoice="PAPER"
+                result={{ winningPosition: "PAPER", winAmount: "XXX.XX" }}
+            />
+
             <div>RockPaperScissors</div>
             <div>
                 <h1>User Balance: {balance}</h1>

@@ -1,0 +1,65 @@
+@import "../../../../styles/colors";
+
+.container {
+    height: 18.3rem;
+    display: flex;
+    justify-content: center;
+}
+
+.defaultMessage {
+    align-self: flex-end;
+    margin-bottom: 1.22rem;
+    font-size: 0.85rem;
+    line-height: 1.7rem;
+    font-weight: 700;
+    letter-spacing: -0.015rem;
+    margin-right: 0.1rem;
+    color: $light;
+}
+
+.processingMessage {
+    display: flex;
+    align-self: center;
+    gap: 4rem;
+    font-weight: 600;
+    letter-spacing: -0.045rem;
+    padding-left: 1rem;
+    padding-bottom: 0.1rem;
+}
+
+.choice {
+    color: white;
+    font-size: 2.7rem;
+}
+
+.vs {
+    color: $light;
+    font-size: 2.5rem;
+}
+
+.winContainer {
+    display: grid;
+    align-self: flex-end;
+    gap: 0.2rem;
+    margin-bottom: 5.5rem;
+}
+
+.winTitle {
+    font-size: 2.75rem;
+    font-weight: 600;
+    letter-spacing: -0.06rem;
+    color: $green-light;
+}
+
+.winMessage {
+    height: 1.75rem;
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: $light;
+    text-align: center;
+    letter-spacing: 0.04rem;
+}
+
+.winNumber {
+    color: white;
+}
