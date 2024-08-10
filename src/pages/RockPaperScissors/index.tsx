@@ -13,9 +13,10 @@ import RpsWrapper from "../../features/rps/components/RpsWrapper";
 import RpsMessage from "../../features/rps/components/RpsMessage";
 import { BetType } from "../../features/rps/ interfaces";
 import RpsCard from "../../features/rps/components/RpsCard";
+import Button from "../../components/Button";
 
 const RockPaperScissors = (): JSX.Element => {
-    const { rpsCardContainer } = styles;
+    const { rpsCardContainer, buttonContainer } = styles;
 
     const loaderData = useLoaderData() as { balance: number };
     const balance = useSelector((state: RootState) => state.user.balance);
@@ -60,6 +61,17 @@ const RockPaperScissors = (): JSX.Element => {
                     callback={(name) => {
                         console.log(name);
                     }}
+                />
+            </div>
+
+            <div className={buttonContainer}>
+                <Button
+                    type="dark"
+                    text="PLAY"
+                    callback={() => {
+                        console.log("XXX");
+                    }}
+                    disabled={true}
                 />
             </div>
 
