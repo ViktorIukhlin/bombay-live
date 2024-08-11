@@ -78,3 +78,16 @@ bombay-live/
 ├── package.json                  # Project metadata and dependencies
 └── yarn.lock / package-lock.json # Dependency lock file
 ```
+## Accessibility
+This application also supports accessibility
+[Watch the video](https://drive.google.com/file/d/1RY1HGftGYvGDd3MqQZAZQhbjM6aHZYK1/view?usp=sharing)
+
+## Web view
+<p align='left'>
+    <img src='https://github.com/ViktorIukhlin/bombay-live/blob/main/documentation/2.png' width='600' alt='web view'>
+</p>
+
+## Mobile view
+<p align='left'>
+    <img src='https://github.com/ViktorIukhlin/bombay-live/blob/main/documentation/1.png' width='300' alt='mobile view'>
+</p>
