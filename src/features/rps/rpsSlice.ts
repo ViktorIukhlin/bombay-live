@@ -1,31 +1,57 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { IBets, IRpsState } from "./ interfaces";
+import {
+    GameStage,
+    IBets,
+    IPartialRpsMatchState,
+    IRpsState,
+} from "./ interfaces";
+import { MINIMUM_BET, MAXIMUM_BET } from "../../lib/constants";
 
 const initialState: IRpsState = {
-    bet: 0,
-    bets: {
-        rock: 0,
-        paper: 0,
-        scissors: 0,
-    },
+    minimumBet: MINIMUM_BET,
+    maximumBet: MAXIMUM_BET,
+    userBets: {},
+    computerChoice: undefined,
+    playerChoice: undefined,
+    winingPosition: undefined,
+    tie: false,
+    winAmount: undefined,
+    gameStage: GameStage.SELECTING_BETS,
 };
 
 const rpsSlice = createSlice({
     name: "rps",
     initialState,
     reducers: {
-        placeBet: (state, action: PayloadAction<number>) => {
-            state.bet = action.payload;
-        },
-        updateBet: (
+        updateGameStage: (state, { payload }: PayloadAction<GameStage>) => ({
+            ...state,
+            gameStage: payload,
+        }),
+        updateUserBets: (state, { payload }: PayloadAction<IBets>) => ({
+            ...state,
+            userBets: {
+                ...state.userBets,
+                ...payload,
+            },
+        }),
+        updateMatchOutcome: (
             state,
-            action: PayloadAction<{ type: keyof IBets; amount: number }>
+            { payload }: PayloadAction<IPartialRpsMatchState>
         ) => {
-            state.bets[action.payload.type] += action.payload.amount;
+            return {
+                ...state,
+                ...payload,
+            };
         },
+        clearRpsState: () => ({ ...initialState }),
     },
 });
 
-export const { placeBet, updateBet } = rpsSlice.actions;
+export const {
+    updateGameStage,
+    updateUserBets,
+    updateMatchOutcome,
+    clearRpsState,
+} = rpsSlice.actions;
 
 export default rpsSlice.reducer;
