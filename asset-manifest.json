@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.css": "/ViktorIukhlin/bombay-live/static/css/main.ee09f27f.css",
-    "main.js": "/ViktorIukhlin/bombay-live/static/js/main.7b7a0b5a.js",
-    "index.html": "/ViktorIukhlin/bombay-live/index.html",
-    "main.ee09f27f.css.map": "/ViktorIukhlin/bombay-live/static/css/main.ee09f27f.css.map",
-    "main.7b7a0b5a.js.map": "/ViktorIukhlin/bombay-live/static/js/main.7b7a0b5a.js.map"
+    "main.css": "/bombay-live/static/css/main.ee09f27f.css",
+    "main.js": "/bombay-live/static/js/main.7b7a0b5a.js",
+    "index.html": "/bombay-live/index.html",
+    "main.ee09f27f.css.map": "/bombay-live/static/css/main.ee09f27f.css.map",
+    "main.7b7a0b5a.js.map": "/bombay-live/static/js/main.7b7a0b5a.js.map"
   },
   "entrypoints": [
     "static/css/main.ee09f27f.css",
