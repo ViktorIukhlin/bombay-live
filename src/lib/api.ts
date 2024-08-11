@@ -1,5 +1,5 @@
 import { IUserState } from "../features/user/interfaces";
-import { START_BALANCE } from "./constants";
+import { START_BALANCE } from "../features/user/constants";
 
 export async function getUserData(): Promise<IUserState> {
     try {

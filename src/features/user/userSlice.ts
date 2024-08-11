@@ -24,7 +24,7 @@ const userSlice = createSlice({
         }),
         increaseTotalWins: (state) => ({
             ...state,
-            totalWins: ++state.totalWins,
+            totalWins: state.totalWins + 1,
         }),
     },
 });

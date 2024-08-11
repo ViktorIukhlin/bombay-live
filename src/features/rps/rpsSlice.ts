@@ -5,7 +5,7 @@ import {
     IPartialRpsMatchState,
     IRpsState,
 } from "./ interfaces";
-import { MINIMUM_BET, MAXIMUM_BET } from "../../lib/constants";
+import { MINIMUM_BET, MAXIMUM_BET } from "./constants";
 
 const initialState: IRpsState = {
     minimumBet: MINIMUM_BET,

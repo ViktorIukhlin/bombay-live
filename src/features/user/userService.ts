@@ -10,7 +10,7 @@ export default class UserService {
         dispatch(setUserData(response));
     }
 
-    public static updateBalance(
+    public static updateBalanceAndWin(
         dispatch: AppDispatch,
         matchResult: MatchResult,
         winAmount: number | undefined,
@@ -19,13 +19,12 @@ export default class UserService {
         if (winAmount) {
             // If there is a win, we add it to the balance
             dispatch(increaseBalance(winAmount));
+
+            // Also increase the win counter
+            dispatch(increaseTotalWins());
         } else if (matchResult === MatchResult.TIE) {
             // if it's a tie then we return the playerBet
             dispatch(increaseBalance(playerBet));
         }
-    }
-
-    public static increaseTotalWins(dispatch: AppDispatch, win: number) {
-        dispatch(increaseTotalWins());
     }
 }

@@ -3,7 +3,7 @@ import {
     MAX_SELECTABLE_POSITIONS,
     WINNING_RATE_FOR_ONE_POSITION,
     WINNING_RATE_FOR_TWO_POSITIONS,
-} from "../../lib/constants";
+} from "./constants";
 import { sleep } from "../../utils/sleep";
 import UserService from "../user/userService";
 import { decreaseBalance } from "../user/userSlice";
@@ -67,8 +67,8 @@ export default class RpsService {
             })
         );
 
-        // Wait 3 seconds for the player to see the message
-        await sleep(3000);
+        // Wait 2 seconds for the player to see the message
+        await sleep(2000);
 
         const winAmount = this.getWinAmount(matchResult, userBets, playerBet);
 
@@ -84,7 +84,12 @@ export default class RpsService {
             })
         );
 
-        UserService.updateBalance(dispatch, matchResult, winAmount, playerBet);
+        UserService.updateBalanceAndWin(
+            dispatch,
+            matchResult,
+            winAmount,
+            playerBet
+        );
     }
 
     public static clearRpsState(dispatch: AppDispatch) {
@@ -119,7 +124,7 @@ export default class RpsService {
 
     // Generate a random computer choice
     private static getComputerChoice(): BetType {
-        const choices = [BetType.rock, BetType.paper, BetType.scissors];
+        const choices = [BetType.ROCK, BetType.PAPER, BetType.SCISSORS];
         const randomIndex = Math.floor(Math.random() * choices.length);
         return choices[randomIndex];
     }
@@ -130,9 +135,9 @@ export default class RpsService {
         computerChoice: BetType
     ): IUserResult {
         const winMap: Record<BetType, BetType> = {
-            [BetType.rock]: BetType.scissors, // Rock beats Scissors
-            [BetType.paper]: BetType.rock, // Paper beats Rock
-            [BetType.scissors]: BetType.paper, // Scissors beat Paper
+            [BetType.ROCK]: BetType.SCISSORS, // Rock beats Scissors
+            [BetType.PAPER]: BetType.ROCK, // Paper beats Rock
+            [BetType.SCISSORS]: BetType.PAPER, // Scissors beat Paper
         };
         const userChoices = Object.keys(userBets) as BetType[];
         const status: { [key: string]: IUserResult } = {};

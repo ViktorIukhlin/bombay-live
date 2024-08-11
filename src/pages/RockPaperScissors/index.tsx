@@ -13,7 +13,7 @@ import { BetType, GameStage } from "../../features/rps/ interfaces";
 import RpsCard from "../../features/rps/components/RpsCard";
 import Button from "../../components/Button";
 import { IRpsCardCallbackProps } from "../../features/rps/components/RpsCard/interfaces";
-import { ButtonText } from "../../features/rps/constatns";
+import { ButtonText } from "../../features/rps/constants";
 
 const RockPaperScissors = (): JSX.Element => {
     const { rpsCardContainer, buttonContainer } = styles;
@@ -75,25 +75,25 @@ const RockPaperScissors = (): JSX.Element => {
                 <RpsCard
                     testId="rps-rock-card"
                     color="blue"
-                    name={BetType.rock}
-                    bet={userBets[BetType.rock]}
-                    active={winingPosition === BetType.rock}
+                    name={BetType.ROCK}
+                    bet={userBets[BetType.ROCK]}
+                    active={winingPosition === BetType.ROCK}
                     callback={handleRpsCardClick}
                 />
                 <RpsCard
                     testId="rps-paper-card"
                     color="green"
-                    name={BetType.paper}
-                    bet={userBets[BetType.paper]}
-                    active={winingPosition === BetType.paper}
+                    name={BetType.PAPER}
+                    bet={userBets[BetType.PAPER]}
+                    active={winingPosition === BetType.PAPER}
                     callback={handleRpsCardClick}
                 />
                 <RpsCard
                     testId="rps-scissors-card"
                     color="red"
-                    name={BetType.scissors}
-                    bet={userBets[BetType.scissors]}
-                    active={winingPosition === BetType.scissors}
+                    name={BetType.SCISSORS}
+                    bet={userBets[BetType.SCISSORS]}
+                    active={winingPosition === BetType.SCISSORS}
                     callback={handleRpsCardClick}
                 />
             </div>

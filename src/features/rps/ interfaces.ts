@@ -1,7 +1,7 @@
 export enum BetType {
-    rock = "ROCK",
-    paper = "PAPER",
-    scissors = "SCISSORS",
+    ROCK = "ROCK",
+    PAPER = "PAPER",
+    SCISSORS = "SCISSORS",
 }
 
 export enum GameStage {

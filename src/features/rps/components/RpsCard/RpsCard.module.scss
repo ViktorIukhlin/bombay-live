@@ -1,4 +1,5 @@
 @import "../../../../styles/colors";
+@import "../../../../styles/variables";
 
 .container {
     display: flex;
@@ -19,6 +20,12 @@
     &:hover {
         box-shadow: 0px 0px 4px rgba(255, 255, 255, 0.85);
     }
+
+    @media only screen and (max-width: $mobileScreen) {
+        width: 5.6rem;
+        height: 4.2rem;
+        padding-bottom: 0.2rem;
+    }
 }
 
 .itemBet {
@@ -32,11 +39,21 @@
     display: flex;
     justify-content: center;
     align-items: center;
+
+    @media only screen and (max-width: $mobileScreen) {
+        width: 2rem;
+        height: 2rem;
+        font-size: 0.6rem;
+    }
 }
 
 .itemName {
     font-size: 1.5rem;
     font-weight: bold;
+
+    @media only screen and (max-width: $mobileScreen) {
+        font-size: 0.8rem;
+    }
 }
 
 // Different colors of the item

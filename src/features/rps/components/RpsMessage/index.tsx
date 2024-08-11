@@ -11,7 +11,7 @@ const RpsMessage = ({
     const {
         container,
         defaultMessage,
-        processingMessage,
+        versusMessage,
         choice,
         vs,
         winContainer,
@@ -70,7 +70,7 @@ const RpsMessage = ({
                 className={container}
                 aria-live="polite"
             >
-                <div className={processingMessage}>
+                <div className={versusMessage}>
                     <span className={choice}>{computerChoice}</span>
                     <span className={vs}>vs</span>
                     <span className={choice}>{playerChoice}</span>
