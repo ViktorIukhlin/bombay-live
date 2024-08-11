@@ -7,19 +7,14 @@ import {
 import { sleep } from "../../utils/sleep";
 import UserService from "../user/userService";
 import { decreaseBalance } from "../user/userSlice";
-import {
-    BetType,
-    GameStage,
-    IBets,
-    IUserResult,
-    MatchResult,
-} from "./ interfaces";
+import { IBets, IUserResult } from "./ interfaces";
 import {
     updateUserBets,
     updateMatchOutcome,
     updateGameStage,
     clearRpsState,
 } from "./rpsSlice";
+import { BetType, GameStage, MatchResult } from "./enums";
 
 export default class RpsService {
     public static updateUserBets(
@@ -56,9 +51,12 @@ export default class RpsService {
     ) {
         // Immediately set GameStage to CALCULATING_RESULTS mode in order to block the play button from being pressed again
         dispatch(updateGameStage(GameStage.CALCULATING_RESULTS));
+
+        // Get all necessary data
         const computerChoice = this.getComputerChoice();
         const { bestPlayerChoice, playerBet, matchResult } =
             this.findBestUserChoice(userBets, computerChoice);
+
         // Set computerChoice and playerChoice to display the Versus message
         dispatch(
             updateMatchOutcome({
@@ -70,8 +68,10 @@ export default class RpsService {
         // Wait 2 seconds for the player to see the message
         await sleep(2000);
 
+        // If the result is a win, then here we will get the correct amount
         const winAmount = this.getWinAmount(matchResult, userBets, playerBet);
 
+        // Update state with result data
         dispatch(
             updateMatchOutcome({
                 winingPosition:
@@ -84,6 +84,7 @@ export default class RpsService {
             })
         );
 
+        // Update player balance and win count
         UserService.updateBalanceAndWin(
             dispatch,
             matchResult,
@@ -168,6 +169,7 @@ export default class RpsService {
             }
         }
 
+        // If there is a bet on a win, we return it, if not, we return a tie, if not, we return a lose
         return status.win || status.tie || status.lose;
     }
 }

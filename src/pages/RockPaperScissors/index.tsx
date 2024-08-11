@@ -9,11 +9,12 @@ import RpsService from "../../features/rps/rpsService";
 import RpsHeader from "../../features/rps/components/RpsHeader";
 import RpsWrapper from "../../features/rps/components/RpsWrapper";
 import RpsMessage from "../../features/rps/components/RpsMessage";
-import { BetType, GameStage } from "../../features/rps/ interfaces";
+
 import RpsCard from "../../features/rps/components/RpsCard";
 import Button from "../../components/Button";
 import { IRpsCardCallbackProps } from "../../features/rps/components/RpsCard/interfaces";
 import { ButtonText } from "../../features/rps/constants";
+import { BetType, GameStage } from "../../features/rps/enums";
 
 const RockPaperScissors = (): JSX.Element => {
     const { rpsCardContainer, buttonContainer } = styles;

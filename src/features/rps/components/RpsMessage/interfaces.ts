@@ -1,4 +1,4 @@
-import { BetType } from "../../ interfaces";
+import { BetType } from "../../enums";
 
 export interface IRpsMessageProps {
     computerChoice?: BetType;

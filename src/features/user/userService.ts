@@ -1,6 +1,6 @@
 import { AppDispatch } from "../../app/store";
 import { getUserData } from "../../lib/api";
-import { MatchResult } from "../rps/ interfaces";
+import { MatchResult } from "../rps/enums";
 import { increaseBalance, setUserData, increaseTotalWins } from "./userSlice";
 
 export default class UserService {

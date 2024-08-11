@@ -1,11 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import {
-    GameStage,
-    IBets,
-    IPartialRpsMatchState,
-    IRpsState,
-} from "./ interfaces";
+import { IBets, IPartialRpsMatchState, IRpsState } from "./ interfaces";
 import { MINIMUM_BET, MAXIMUM_BET } from "./constants";
+import { GameStage } from "./enums";
 
 const initialState: IRpsState = {
     minimumBet: MINIMUM_BET,

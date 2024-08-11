@@ -1,4 +1,4 @@
-import { GameStage } from "./ interfaces";
+import { GameStage } from "./enums";
 
 export const MINIMUM_BET = 500;
 export const MAXIMUM_BET = null;
