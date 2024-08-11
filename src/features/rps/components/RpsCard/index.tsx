@@ -18,7 +18,7 @@ const RpsCard = ({
             className={`${container} ${styles[color]} ${
                 active ? selected : ""
             }`}
-            onClick={() => callback(name)}
+            onClick={() => callback({ betType: name, currentBet: bet || 0 })}
             role="button"
             aria-pressed={active}
             aria-label={`Bet item: ${name}, bet amount: ${

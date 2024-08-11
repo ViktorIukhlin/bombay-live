@@ -1,4 +1,4 @@
 export interface IUserState {
     balance: number;
-    totalWin: number;
+    totalWins: number;
 }

@@ -1,17 +1,15 @@
-import { sleep } from "../utils/sleep";
+import { IUserState } from "../features/user/interfaces";
+import { START_BALANCE } from "./constants";
 
-export async function getUserData(): Promise<{}> {
+export async function getUserData(): Promise<IUserState> {
     try {
         return new Promise(async (resolve) => {
-            await sleep(1000);
-
-            const fakeData = {
-                balance: 5000,
-            };
-
-            resolve(fakeData);
+            resolve({
+                balance: START_BALANCE,
+                totalWins: 0,
+            });
         });
     } catch (error) {
-        return new Error("Error to get user data.");
+        throw new Error("Error to get user data.");
     }
 }

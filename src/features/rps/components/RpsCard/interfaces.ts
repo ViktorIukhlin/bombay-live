@@ -1,10 +1,17 @@
+import { BetType } from "../../ interfaces";
+
 export type IColorType = "green" | "blue" | "red";
+
+export interface IRpsCardCallbackProps {
+    betType: BetType;
+    currentBet: number;
+}
 
 export interface IRpsCardProps {
     testId: string;
-    name: string;
+    name: BetType;
     color: IColorType;
     active?: boolean;
     bet?: number;
-    callback(name: string): void;
+    callback({ betType, currentBet }: IRpsCardCallbackProps): void;
 }

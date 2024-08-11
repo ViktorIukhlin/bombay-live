@@ -1,8 +1,6 @@
 import styles from "./RockPaperScissors.module.scss";
 
-import { useLoaderData, defer, Await } from "react-router-dom";
-import { getUserData } from "../../lib/api";
-import { Suspense, useEffect } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../app/store";
 
@@ -11,10 +9,11 @@ import RpsService from "../../features/rps/rpsService";
 import RpsHeader from "../../features/rps/components/RpsHeader";
 import RpsWrapper from "../../features/rps/components/RpsWrapper";
 import RpsMessage from "../../features/rps/components/RpsMessage";
-import { BetType } from "../../features/rps/ interfaces";
+import { BetType, GameStage } from "../../features/rps/ interfaces";
 import RpsCard from "../../features/rps/components/RpsCard";
 import Button from "../../components/Button";
-import { IUserState } from "../../features/user/interfaces";
+import { IRpsCardCallbackProps } from "../../features/rps/components/RpsCard/interfaces";
+import { ButtonText } from "../../features/rps/constatns";
 
 const RockPaperScissors = (): JSX.Element => {
     const { rpsCardContainer, buttonContainer } = styles;
@@ -27,18 +26,37 @@ const RockPaperScissors = (): JSX.Element => {
     // Game State
     const {
         minimumBet,
+        maximumBet,
         userBets,
         computerChoice,
         playerChoice,
         winingPosition,
         tie,
         winAmount,
+        gameStage,
     } = useSelector((state: RootState) => state.rps);
 
     useEffect(() => {
         // Setting up initial data for the user
         UserService.loadUserData(dispatch);
     }, [dispatch]); // Dispatch is stable and won't change between renders
+
+    const handleRpsCardClick = ({
+        betType,
+        currentBet,
+    }: IRpsCardCallbackProps) => {
+        if (gameStage === GameStage.SELECTING_BETS) {
+            RpsService.updateUserBets(
+                dispatch,
+                betType,
+                currentBet,
+                minimumBet,
+                maximumBet,
+                userBets,
+                balance
+            );
+        }
+    };
 
     return (
         <RpsWrapper>
@@ -60,9 +78,7 @@ const RockPaperScissors = (): JSX.Element => {
                     name={BetType.rock}
                     bet={userBets[BetType.rock]}
                     active={winingPosition === BetType.rock}
-                    callback={(name) => {
-                        console.log(name);
-                    }}
+                    callback={handleRpsCardClick}
                 />
                 <RpsCard
                     testId="rps-paper-card"
@@ -70,9 +86,7 @@ const RockPaperScissors = (): JSX.Element => {
                     name={BetType.paper}
                     bet={userBets[BetType.paper]}
                     active={winingPosition === BetType.paper}
-                    callback={(name) => {
-                        console.log(name);
-                    }}
+                    callback={handleRpsCardClick}
                 />
                 <RpsCard
                     testId="rps-scissors-card"
@@ -80,19 +94,27 @@ const RockPaperScissors = (): JSX.Element => {
                     name={BetType.scissors}
                     bet={userBets[BetType.scissors]}
                     active={winingPosition === BetType.scissors}
-                    callback={(name) => {
-                        console.log(name);
-                    }}
+                    callback={handleRpsCardClick}
                 />
             </div>
             <div className={buttonContainer}>
                 <Button
                     type="dark"
-                    text="PLAY"
+                    text={ButtonText[gameStage]}
                     callback={() => {
-                        console.log("XXX");
+                        if (gameStage === GameStage.SELECTING_BETS) {
+                            RpsService.handlePlayButtonClick(
+                                dispatch,
+                                userBets
+                            );
+                        } else {
+                            RpsService.clearRpsState(dispatch);
+                        }
                     }}
-                    disabled={true}
+                    disabled={
+                        gameStage === GameStage.CALCULATING_RESULTS ||
+                        !Object.keys(userBets).length
+                    }
                 />
             </div>
         </RpsWrapper>

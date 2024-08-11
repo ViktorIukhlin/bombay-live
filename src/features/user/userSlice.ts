@@ -2,7 +2,6 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { IUserState } from "./interfaces";
 
 const initialState: IUserState = {
-    userId: 0,
     balance: 0,
     totalWins: 0,
 };

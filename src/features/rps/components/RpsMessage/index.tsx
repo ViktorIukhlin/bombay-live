@@ -4,7 +4,7 @@ import styles from "./RpsMessage.module.scss";
 const RpsMessage = ({
     computerChoice,
     playerChoice,
-    winningPosition,
+    winingPosition,
     winAmount,
     tie,
 }: IRpsMessageProps): JSX.Element => {
@@ -21,7 +21,7 @@ const RpsMessage = ({
         tieTitle,
     } = styles;
 
-    // Tie
+    // Tie message
     if (tie)
         return (
             <section
@@ -31,14 +31,14 @@ const RpsMessage = ({
             >
                 <div className={winContainer}>
                     <h2 className={`${winTitle} ${tieTitle}`} role="alert">
-                        TIE
+                        {winingPosition} TIE
                     </h2>
                 </div>
             </section>
         );
 
-    // Win
-    if (winningPosition)
+    // Win message
+    if (winingPosition)
         return (
             <section
                 data-test-id="rps-win-message"
@@ -47,7 +47,7 @@ const RpsMessage = ({
             >
                 <div className={winContainer}>
                     <h2 className={winTitle} role="alert">
-                        {winningPosition} WON
+                        {winingPosition} WON
                     </h2>
 
                     <div className={winMessage}>
@@ -62,7 +62,7 @@ const RpsMessage = ({
             </section>
         );
 
-    // Processing
+    // Versus message
     if (computerChoice && playerChoice)
         return (
             <section
@@ -78,7 +78,7 @@ const RpsMessage = ({
             </section>
         );
 
-    // Default
+    // Default message
     return (
         <section
             data-test-id="rps-default-message"
