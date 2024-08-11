@@ -1,46 +1,80 @@
-# Getting Started with Create React App
+# Rock, Paper, Scissors (RPS) game
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+The main goal of this project is to meet the requirements for creating a flexible and maintainable application.
+Also, if necessary, you can test this app on [git hub pages](https://viktoriukhlin.github.io/bombay-live/)
 
-## Available Scripts
+## RPS game settings
+All settings regarding the game are in the [constants.ts](https://github.com/ViktorIukhlin/bombay-live/blob/main/src/features/rps/constants.ts) file (src/features/rps/constants.ts)
 
-In the project directory, you can run:
+```
+MINIMUM_BET
+The minimum bet a user can place, or simply the bet size. 
+The default value is 500 (Task requirement)
 
-### `npm start`
+MAXIMUM_BET
+The maximum bet a user can place on 1 position. 
+The default value is null, which is equivalent to infinity. (Task requirement)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+MAX_SELECTABLE_POSITIONS
+The maximum number of positions a player can place bets on. 
+The default value is 2. (Task requirement)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+WINNING_RATE_FOR_ONE_POSITION 
+Winning rate for bet on 1 position. 
+The default value is 14. (Task requirement)
 
-### `npm test`
+WINNING_RATE_FOR_TWO_POSITIONS 
+Winning rate for bet on 2 and more positions. 
+The default value is 3. (Task requirement)
+```
+You can also set up the starting balance in [this](https://github.com/ViktorIukhlin/bombay-live/blob/main/src/features/user/constants.ts) file (src/features/user/constants.ts)
+The default value is 5000. (Task requirement)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Project structure
+```
+bombay-live/
+├── public/                       # Static assets (index.html, favicon, etc.)
+├── src/                          # Source code
+│   ├── app/                      # Global app configuration and store
+│   │   └── store/                # Redux store setup
+│   ├── components/               # Reusable React components
+│   │   └── Button/               # Button component
+│   ├── features/                 # Feature-specific logic and components
+│   │   ├── rps/                  # Rock-Paper-Scissors feature
+│   │   │   ├── components/       # RPS-specific components
+│   │   │   │   ├── RpsCard/      # RPS Card component
+│   │   │   │   ├── RpsHeader/    # RPS Header component
+│   │   │   │   ├── RpsMessage/   # RPS Message component
+│   │   │   │   └── RpsWrapper/   # RPS Wrapper component
+│   │   │   ├── interfaces.ts     # TypeScript interfaces for RPS
+│   │   │   ├── constants.ts      # Constants used in RPS feature
+│   │   │   ├── enums.ts          # Enums used in RPS feature
+│   │   │   ├── rpsService.ts     # Service for handling RPS logic
+│   │   │   ├── rpsService.test.ts # Tests for RPS service
+│   │   │   └── rpsSlice.ts       # Redux slice for RPS feature
+│   │   └── user/                 # User management feature
+│   │       ├── constants.ts      # Constants used in User feature
+│   │       ├── interfaces.ts     # TypeScript interfaces for User feature
+│   │       ├── userService.ts    # Service for handling User logic
+│   │       ├── userService.test.ts # Tests for User service
+│   │       └── userSlice.ts      # Redux slice for User feature
+│   ├── lib/                      # Utility libraries and API clients
+│   │   └── api/                  # API client configuration
+│   ├── pages/                    # Top-level page components
+│   │   └── RockPaperScissors/    # Rock-Paper-Scissors page component
+│   ├── styles/                   # Global CSS/SCSS styles
+│   │   ├── _colors.scss          # Color variables
+│   │   ├── _defaults.scss        # Default styles
+│   │   ├── _variables.scss       # General variables
+│   │   └── index.scss            # Main stylesheet
+│   ├── utils/                    # Utility functions and helpers
+│   ├── index.tsx                 # Entry point for React
+│   ├── react-app-env.d.ts        # TypeScript environment settings for React
+│   ├── routes.tsx                # React Router configurations
+│   └── setupTests.ts             # Jest setup file for tests
+├── .gitignore                    # Git ignore file
+├── README.md                     # Project documentation
+├── tsconfig.json                 # TypeScript configuration
+├── package.json                  # Project metadata and dependencies
+└── yarn.lock / package-lock.json # Dependency lock file
+```
