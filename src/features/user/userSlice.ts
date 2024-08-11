@@ -2,23 +2,39 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { IUserState } from "./interfaces";
 
 const initialState: IUserState = {
+    userId: 0,
     balance: 0,
-    totalWin: 0,
+    totalWins: 0,
 };
 
 const userSlice = createSlice({
     name: "user",
     initialState,
     reducers: {
-        setBalance: (state, action: PayloadAction<number>) => {
-            state.balance = action.payload;
-        },
-        updateTotalWin: (state, action: PayloadAction<number>) => {
-            state.totalWin += action.payload;
-        },
+        setUserData: (state, { payload }: PayloadAction<IUserState>) => ({
+            ...state,
+            ...payload,
+        }),
+        increaseBalance: (state, { payload }: PayloadAction<number>) => ({
+            ...state,
+            balance: state.balance + payload,
+        }),
+        decreaseBalance: (state, { payload }: PayloadAction<number>) => ({
+            ...state,
+            balance: state.balance - payload,
+        }),
+        increaseTotalWins: (state) => ({
+            ...state,
+            totalWins: ++state.totalWins,
+        }),
     },
 });
 
-export const { setBalance, updateTotalWin } = userSlice.actions;
+export const {
+    setUserData,
+    increaseBalance,
+    decreaseBalance,
+    increaseTotalWins,
+} = userSlice.actions;
 
 export default userSlice.reducer;
