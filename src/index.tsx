@@ -1,6 +1,6 @@
 import { StrictMode } from "react";
 import ReactDOM from "react-dom/client";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createHashRouter, RouterProvider } from "react-router-dom";
 import routes from "./routes";
 import { Provider } from "react-redux";
 import store from "./app/store";
@@ -10,7 +10,7 @@ const root = ReactDOM.createRoot(
     document.getElementById("root") as HTMLElement
 );
 
-const router = createBrowserRouter(routes);
+const router = createHashRouter(routes);
 
 root.render(
     <StrictMode>
